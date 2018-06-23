@@ -1,0 +1,16 @@
+<div class="card mb-3">
+  <div class="card-header">{% if post.category %}{{ post.category }}{% else %}No Category{% endif %}</div>
+  <div class="card-body">
+    <h3 class="h4 card-title">
+      <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+    </h3>
+    <div>
+      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+      <time class="card-text"><i class="far fa-calendar-alt"></i> {{ post.date | date: date_format }}</time>
+      <p class="card-text">{{ post.excerpt }}</p>
+      <div class="text-right">
+        <a class="card-link" href="{{ post.url | relative_url }}">read more</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
+
+    {% include meta.html %}
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="{{ "https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/lux/bootstrap.min.css" | relative_url }}">
+    <link rel="stylesheet" href="{{ "https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" | relative_url }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ site.github.url }}/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    {%- include header.html -%}
+    <div class="bg-light">
+      <div class="container pt-4 pb-2" role="main">
+        {{ content }}
+      </div>
+    </div>
+    <div class="bg-primary p-4 text-white">
+      {%- include footer.html -%}
+    </div>
+    {% include analytics.html %}
+    <script src="{{ site.github.url }}/index.js"></script>
+  </body>
+</html>

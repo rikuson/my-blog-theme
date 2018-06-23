@@ -1,0 +1,35 @@
+<header class="navbar navbar-expand-lg navbar-dark bg-primary" role="banner">
+
+  <a class="navbar-brand" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  {%- assign default_paths = site.pages | map: "path" -%}
+  {%- assign page_paths = site.header_pages | default: default_paths -%}
+  <nav class="collapse navbar-collapse" id="navbarSupportedContent">
+    {%- if page_paths -%}
+    <ul class="navbar-nav mr-auto">
+      {%- for path in page_paths -%}
+      {%- assign my_page = site.pages | where: "path", path | first -%}
+      {%- if my_page.title -%}
+      <li class="nav-item">
+        <a class="nav-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+      </li>
+      {%- endif -%}
+      {% endfor -%}
+    </ul>
+    {%- endif -%}
+    <div id="search_box" class="nav-item">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search">
+        <div class="input-group-append">
+          <span class="input-group-text">
+            <i class="fas fa-search"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+    <a class="btn btn-success my-2 my-sm-0" href="https://docs.google.com/forms/d/e/1FAIpQLSdMzpZHoJIVssPnHXLclw7QaMGYuDiNUgq2NokKOhGjp__kvA/viewform?usp=sf_link" target="_blank"><i class="fas fa-envelope"></i> ご依頼</a>
+  </nav>
+</header>
