@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import Liquid from 'liquidjs';
 
 /**
  * @example
@@ -18,12 +17,10 @@ const SearchBox = SearchBox || function($this) {
   let _$input;
   let _$icon;
   let _busy;
-  let _liquid;
   let _val;
 
   function __construct($this) {
     _$this = $this;
-    _liquid = new Liquid();
     _$input = _$this.find('input');
     _$input.val('');
     _$icon = _$this.find('.fas');

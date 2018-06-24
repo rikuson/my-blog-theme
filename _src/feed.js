@@ -29,7 +29,7 @@ const Feed = Feed || function(url) {
     const $entries = $(xml).find('entry');
     // jQuery.map()
     // not native Array.map()
-    const $data = $entries.map(function() {
+    const $data = $entries.map(function(i) {
       return {
         id: $entries.index(this),
         title: $(this).find('title').text(),
@@ -44,8 +44,7 @@ const Feed = Feed || function(url) {
   }
 
   function search(keyword) {
-    const result = _index.search(keyword);
-    return result.map((val, i) => _data[val.ref]);
+    return _index.search(keyword).map(val => Number(val.ref) + 1);
   }
 
   __construct(url);
