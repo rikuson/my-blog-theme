@@ -1,10 +1,14 @@
+#search_message {
+  display: none;
+}
+
 #search_box {
   position: relative;
 }
 
 #search_box .form-control {
   background: inherit;
-  color: inherit;
+  color: #FFF;
 }
 
 #search_box .input-group-text {
@@ -15,6 +19,11 @@
   bottom: 0;
   right: 0;
   border: none;
+}
+
+#contents {
+  /* header: 95px */
+  min-height: calc(100vh - 95px);
 }
 
 #posts .card {

@@ -10,7 +10,7 @@ $(async function() {
   const $search_box = new SearchBox($('#search_box'));
   const feed = new Feed('feed.xml');
   const $posts = $('#posts');
-  const post_ids = $.makeArray($posts.children().map(function() {
+  const post_ids = $.makeArray($posts.find('[data-id]').map(function() {
     return $(this).data('id');
   }));
   const $message = $('#search_message');
@@ -20,20 +20,21 @@ $(async function() {
 
   function renderPosts() {
     const res_ids = feed.search($search_box.val());
-    const res_exists = res_ids.length === 0;
-    display($message, res_exists);
-    post_ids.forEach(post_id => {
-      const $post = $posts.find(`[data-id="${post_id}"]`);
-      const res_includes_post = res_ids.includes(post_id);
-      display($post, res_includes_post);
-    });
-  }
 
-  function display($elm, condition) {
-    if (condition) {
-      $elm.removeClass('d-none');
+    for (let i = 1; i <= post_ids.length; i++) {
+      const post_id = post_ids[i - 1];
+      const $post = $posts.find(`[data-id="${post_id}"]`);
+      if (res_ids.includes(post_id)) {
+        $post.show();
+      } else {
+        $post.hide();
+      }
+    }
+
+    if (res_ids.length === 0) {
+      $message.show();
     } else {
-      $elm.addClass('d-none');
+      $message.hide();
     }
   }
 });

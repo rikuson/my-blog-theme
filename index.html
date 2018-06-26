@@ -5,16 +5,17 @@
 layout: default
 ---
 
-<div class="posts">
-  <div class="row">
-    <article id="posts" class="card-columns">
-      {% for post in site.posts %}
-        {% include post.html %}
-      {% endfor %}
-    </article>
-    <div id="search_message" class="alert alert-dismissible alert-warning d-none">
-      <h4 class="alert-heading">No Result</h4>
-      <p class="mb-0">Please try changing the search keyword.</p>
-    </div>
+<div id="posts" class="row">
+  <article class="card-columns">
+    {% for post in site.posts %}
+    {% include post.html %}
+    {% endfor %}
+  </article>
+</div>
+<div class="row">
+  <div id="search_message" class="alert alert-dismissible alert-warning">
+    <h4 class="alert-heading">No Result</h4>
+    <p class="mb-0">Please try changing the search keyword.</p>
   </div>
 </div>
+

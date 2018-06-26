@@ -9,7 +9,7 @@ import $ from 'jquery';
  * });
  */
 const SearchBox = SearchBox || function($this) {
-  const DELAY_TIME = 1000;
+  const DELAY_TIME = 500;
   const FREE_CLASS = 'fa-search';
   const BUSY_CLASS = 'fa-circle-notch';
 
