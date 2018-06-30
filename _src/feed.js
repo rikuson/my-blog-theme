@@ -9,22 +9,21 @@ import lunr from 'lunr';
  *   $post_list.setData(data).render();
  * })
  */
-const Feed = Feed || function(url) {
+const Feed = Feed || function(xml) {
   let _data;
   let _index;
 
-  async function __construct(url) {
-    _data = await fetchXmlData(url);
+  async function __construct(xml) {
+    _data = formatXmlData(xml);
     _index = lunr(function() {
       this.field('title');
       this.field('category');
       this.field('content');
-      _data.forEach(d => this.add(d));
+      _data.map(d => this.add(d));
     });
   }
 
-  async function fetchXmlData(url) {
-    const xml = await $.ajax({ url, dataType: 'xml' });
+  function formatXmlData(xml) {
     // get entry data
     const $entries = $(xml).find('entry');
     // jQuery.map()
@@ -47,7 +46,7 @@ const Feed = Feed || function(url) {
     return _index.search(keyword).map(val => Number(val.ref) + 1);
   }
 
-  __construct(url);
+  __construct(xml);
 
   return { search };
 }

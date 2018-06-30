@@ -42,8 +42,13 @@ const SearchBox = SearchBox || function($this) {
     render();
   }
 
-  function val() {
-    return _$input.val();
+  function val(keyword) {
+    if (typeof keyword === 'undefined') {
+      return _$input.val();
+    } else {
+      _$input.val(keyword);
+      return _$this;
+    }
   }
 
   function render() {

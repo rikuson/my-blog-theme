@@ -46,11 +46,14 @@ const config = {
       $: 'jquery',
       jQuery: 'jquery'
     }),
-    // TODO: set option
-    new MinifyPlugin({}, {}),
   ],
-  mode: 'production',
+  mode: process.env.NODE_ENV,
 };
+
+if(process.env.NODE_ENV === 'production'){
+  // TODO: set option
+  config.plugins.push(new MinifyPlugin({}, {}));
+}
 
 module.exports = config;
 

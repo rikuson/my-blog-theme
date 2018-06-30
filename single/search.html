@@ -1,16 +1,15 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
-layout: default
+layout: page
+permalink: /search/
+title: Search
 ---
 
 <div id="posts" class="row">
-  <article class="card-columns">
+  <div class="card-columns">
     {% for post in site.posts %}
     {% include post.html %}
     {% endfor %}
-  </article>
+  </div>
 </div>
 <div class="row">
   <div id="search_message" class="alert alert-dismissible alert-warning d-none">

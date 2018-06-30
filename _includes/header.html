@@ -12,24 +12,32 @@
     <ul class="navbar-nav mr-auto">
       {%- for path in page_paths -%}
       {%- assign my_page = site.pages | where: "path", path | first -%}
-      {%- if my_page.title -%}
+      {%- if my_page.title == '' or path contains 'single/' -%}
+      {%- else -%}
       <li class="nav-item">
         <a class="nav-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
       </li>
       {%- endif -%}
-      {% endfor -%}
+      {%- endfor -%}
     </ul>
     {%- endif -%}
-    <div id="search_box" class="nav-item">
+    <form id="search_box" class="nav-item" action="{{ site.baseurl }}search/">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search">
+        <div id="auto_complete" class="dropdown-menu">
+          {% for post in site.posts %}
+          <a class="dropdown-item" href="{{ post.url | relative_url }}" data-id="{{ forloop.index }}">{{ post.title | escape }}</a>
+          {% endfor %}
+          <div role="separator" class="dropdown-divider"></div>
+          <button class="dropdown-item" type="submit">More...</button>
+        </div>
+        <input name="keyword" type="text" class="form-control" placeholder="Search">
         <div class="input-group-append">
-          <span class="input-group-text">
+          <button class="btn" type="submit">
             <i class="fas fa-search"></i>
-          </span>
+          </button>
         </div>
       </div>
-    </div>
+    </form>
     <a class="btn btn-success my-2 my-sm-0" href="https://docs.google.com/forms/d/e/1FAIpQLSdMzpZHoJIVssPnHXLclw7QaMGYuDiNUgq2NokKOhGjp__kvA/viewform?usp=sf_link" target="_blank"><i class="fas fa-envelope"></i> ご依頼</a>
   </nav>
 </header>
