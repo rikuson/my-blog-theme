@@ -3,43 +3,60 @@ import $ from 'jquery';
 /**
  * @example
  * let feed = new Feed(lunr);
- * $search_box.on('free', () => {
+ * $search_box.on('ready', () => {
  *   var posts = feed.search(val);
  *   $contents_box.setPostData(posts);
  * });
  */
 const SearchBox = SearchBox || function($this) {
   const DELAY_TIME = 500;
-  const FREE_CLASS = 'fa-search';
-  const BUSY_CLASS = 'fa-circle-notch';
+  const STANDBY_CLASS_NAME = 'fa-search';
+  const READY_CLASS_NAME = 'fa-times';
+  const BUSY_CLASS_NAME = 'fa-circle-notch';
 
   let _$this;
-  let _$input;
+  let _$btn;
   let _$icon;
+  let _$input;
   let _busy;
   let _val;
 
   function __construct($this) {
     _$this = $this;
+    _$btn = $this.find('button');
+    _$icon = _$btn.find('.fas');
     _$input = _$this.find('input');
-    _$input.val('');
-    _$icon = _$this.find('.fas');
 
-    release();
+    _$btn.on('click', () => {
+      if (_$icon.hasClass(READY_CLASS_NAME)) {
+        _$input.val('');
+        _$input.focus();
+      }
+    });
 
     _$input.on('keyup', lock);
+    _$input.on('focus', release);
+
+    // Replacement of `_$input.on('blur', standby)` which disturbs `_$btn.on('click')`
+    $(document).click(e => $(e.target).closest(_$this).length || standby());
   }
 
   function lock() {
-    _busy = true;
+    changeIconClassName(BUSY_CLASS_NAME);
+    _$btn.attr('type', 'button');
     setTimeout(release, DELAY_TIME);
-    render();
   }
 
   function release() {
-    _busy = false
-    _$this.trigger('free');
-    render();
+    changeIconClassName(READY_CLASS_NAME);
+    _$btn.attr('type', 'button');
+    _$this.trigger('ready');
+  }
+
+  function standby() {
+    _$btn.attr('type', 'submit');
+    changeIconClassName(STANDBY_CLASS_NAME);
+    _$this.trigger('blur');
   }
 
   function val(keyword) {
@@ -51,12 +68,9 @@ const SearchBox = SearchBox || function($this) {
     }
   }
 
-  function render() {
-    if (_busy) {
-      _$icon.removeClass(FREE_CLASS).addClass(BUSY_CLASS);
-    } else {
-      _$icon.removeClass(BUSY_CLASS).addClass(FREE_CLASS);
-    }
+  function changeIconClassName(class_name) {
+    const all_class_names = [STANDBY_CLASS_NAME, READY_CLASS_NAME, BUSY_CLASS_NAME].join(' ');
+    _$icon.removeClass(all_class_names).addClass(class_name);
   }
 
   __construct($this);

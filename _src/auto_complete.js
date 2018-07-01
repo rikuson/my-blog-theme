@@ -1,25 +1,54 @@
 /**
  * 
  */
-const AutoComplete = AutoComplete || function(selector) {
+const AutoComplete = AutoComplete || function(feed, selector) {
+  let _feed;
+
   let _$this;
-  let _$link;
+  let _$links;
 
-  function __construct(selector) {
+  function __construct(feed, selector) {
+    _feed = feed;
     _$this = $(selector);
-    _$link = _$this.find('.dropdown-item:last-child');
+    _$links = _$this.find('[data-id]');
   }
 
-  function display(data) {
-    data.length === 0 ? _$this.hide() : _$this.show();
-    _$this.find('[data-id]').hide();
-    // $(`[data-id={${data.join(',')}}]`).show();
-    data.forEach(id => _$this.find(`[data-id="${id}"]`).show());
+  function suggest(keyword) {
+    _$links.each(function() {
+      const tmp = $(this).attr('href').split('?');
+      let query = tmp[1] ? queryStrToObj(tmp[1]) : {};
+      query.keyword = keyword;
+      $(this).attr('href', `${tmp[0]}?${objToQueryStr(query)}`);
+    });
+
+    const data = feed.search(keyword);
+    if (data.length === 0) {
+      _$this.stop().hide();
+    } else {
+      _$this.find('[data-id]').hide();
+      data.forEach(id => _$this.find(`[data-id="${id}"]`).show());
+      _$this.stop().show();
+    }
   }
 
-  __construct(selector);
+  function objToQueryStr(obj) {
+    let params = [];
+    for (let key in obj) params.push(`${key}=${obj[key]}`);
+    return params.join('&');
+  }
 
-  return $.extend(_$this, { display });
+  function queryStrToObj(str) {
+    let obj = {};
+    str.split('&').map(s => {
+      const tmp = s.split('=');
+      obj[tmp[0]] = tmp[1];
+    });
+    return obj;
+  }
+
+  __construct(feed, selector);
+
+  return $.extend(_$this, { suggest });
 };
 
 export default AutoComplete;

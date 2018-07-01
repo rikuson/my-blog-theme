@@ -7,25 +7,20 @@
   color: #FFF;
 }
 
-#search_box .btn {
+#search_box button {
   background: none;
   color: inherit;
   border: none;
   z-index: 100;
-}
-
-#search_box .input-group-prepend {
   position: absolute;
-  left: 0;
+  right: 1rem;
   top: 0;
   bottom: 0;
-}
-
-#search_box .input-group-append {
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  cursor: pointer;
+  height: 1rem;
+  width: 1rem;
+  margin: auto;
+  padding: 0;
 }
 
 #contents {

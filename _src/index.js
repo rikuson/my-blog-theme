@@ -20,16 +20,16 @@ $(async function() {
   if (res_ids.length === 0) show($message);
   $search_box.val(keyword);
 
-  const $auto_complete = new AutoComplete('#auto_complete');
+  const $auto_complete = new AutoComplete(feed, '#auto_complete');
   // search event
-  $search_box.on('free', () => {
+  $search_box.on('ready', () => {
     if ($search_box.val().length === 0) {
       $auto_complete.hide();
     } else {
-      const ids = feed.search($search_box.val());
-      $auto_complete.display(ids);
+      $auto_complete.suggest($search_box.val());
     }
   });
+  $search_box.on('blur', () => $auto_complete.stop().hide());
 });
 
 function getQuery() {
