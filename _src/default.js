@@ -12,10 +12,8 @@ $(async function() {
   const feed = new Feed(xml);
   const $search_box = new SearchBox($('#search_box'));
 
-  const $posts = $('#posts');
   const { keyword } = getQuery();
   const res_ids = feed.search(keyword);
-  show($posts.find('[data-id]'));
   $search_box.val(keyword);
 
   const $auto_complete = new AutoComplete('#auto_complete');
@@ -38,8 +36,4 @@ function getQuery() {
     query[tmp[0]] = tmp[1];
   });
   return query;
-}
-
-function show($elm) {
-  $elm.removeClass('d-none');
 }

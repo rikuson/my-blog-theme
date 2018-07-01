@@ -13,9 +13,11 @@ $(async function() {
   const $search_box = new SearchBox($('#search_box'));
 
   const $posts = $('#posts');
+  const $message = $('#search_message');
   const { keyword } = getQuery();
   const res_ids = feed.search(keyword);
-  show($posts.find('[data-id]'));
+  res_ids.map(id => show($posts.find(`[data-id="${id}"]`)));
+  if (res_ids.length === 0) show($message);
   $search_box.val(keyword);
 
   const $auto_complete = new AutoComplete('#auto_complete');
