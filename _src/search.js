@@ -13,21 +13,23 @@ $(async function() {
   const $search_box = new SearchBox($('#search_box'));
 
   const $posts = $('#posts');
+  const $message = $('#search_message');
   const { keyword } = getQuery();
   const res_ids = feed.search(keyword);
-  show($posts.find('[data-id]'));
+  res_ids.map(id => show($posts.find(`[data-id="${id}"]`)));
+  if (res_ids.length === 0) show($message);
   $search_box.val(keyword);
 
-  const $auto_complete = new AutoComplete(feed, '#auto_complete');
+  const $auto_complete = new AutoComplete('#auto_complete');
   // search event
-  $search_box.on('ready', () => {
+  $search_box.on('free', () => {
     if ($search_box.val().length === 0) {
       $auto_complete.hide();
     } else {
-      $auto_complete.suggest($search_box.val());
+      const ids = feed.search($search_box.val());
+      $auto_complete.display(ids);
     }
   });
-  $search_box.on('blur', () => $auto_complete.stop().hide());
 });
 
 function getQuery() {

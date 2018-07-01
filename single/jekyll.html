@@ -1,8 +1,19 @@
 ---
-layout: category
+layout: default
 category: jekyll
 title: Jekyll
-permalink: /category/jekyll/
+permalink: /category/jekyll
+controller: category
 ---
 
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.
+
+<div id="posts">
+  <div class="card-columns">
+    {% for post in site.posts %}
+    {% if post.category == 'jekyll' %}
+    {% include post.html %}
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
