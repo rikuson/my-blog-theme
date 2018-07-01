@@ -5,7 +5,7 @@
       <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
     </h3>
     <div>
-      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+      {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
       <time class="card-text"><i class="far fa-calendar-alt"></i> {{ post.date | date: date_format }}</time>
       <p class="card-text">{{ post.excerpt }}</p>
       <div class="text-right">
