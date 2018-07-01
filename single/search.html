@@ -1,10 +1,11 @@
 ---
-layout: page
-permalink: /search/
+layout: default
+permalink: /search
 title: Search
+controller: search
 ---
 
-<div id="posts" class="row">
+<div id="posts">
   <div class="card-columns">
     {% for post in site.posts %}
     {% include post.html %}
