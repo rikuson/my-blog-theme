@@ -4,7 +4,7 @@ import lunr from 'lunr';
 /**
  * @example
  * var feed = new Feed();
- * $search_box.on('free', function() {
+ * $search_box.on('ready', function() {
  *   var data = feed.search($search_box.getVal());
  *   $post_list.setData(data).render();
  * })

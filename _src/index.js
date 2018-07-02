@@ -14,17 +14,16 @@ $(async function() {
 
   const $posts = $('#posts');
   const { keyword } = getQuery();
-  const res_ids = feed.search(keyword);
   show($posts.find('[data-id]'));
   $search_box.val(keyword);
 
   const $auto_complete = new AutoComplete(feed, '#auto_complete');
   // search event
   $search_box.on('ready', () => {
-    if ($search_box.val().length === 0) {
-      $auto_complete.hide();
-    } else {
+    if ($search_box.val()) {
       $auto_complete.suggest($search_box.val());
+    } else {
+      $auto_complete.hide();
     }
   });
   $search_box.on('blur', () => $auto_complete.stop().hide());
