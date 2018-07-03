@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import 'bootstrap';
+import './style.css'
 import SearchBox from './search_box.js';
 import Feed from './feed.js';
 import AutoComplete from './auto_complete.js';
