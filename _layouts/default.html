@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{ "https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" | relative_url }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
+    <script src="{{ site.baseurl }}/assets/bundle.js" data-controller="{{ page.controller }}"></script>
   </head>
   <body>
     {% include header.html %}
@@ -44,6 +45,5 @@
     </div>
     {% include footer.html %}
     {% include analytics.html %}
-    <script src="{{ site.baseurl }}/dist/{% if page.controller %}{{ page.controller }}{% else %}default{% endif %}.js"></script>
   </body>
 </html>

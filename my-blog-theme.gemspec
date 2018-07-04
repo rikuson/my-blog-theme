@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.description   = "It's based on jekyll and bootstrap-4."
   spec.homepage      = "http://rikson.net"
 
-  spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(assets|_layouts|_includes|_sass|LICENSE|README)!i) }
+  spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(dist|_layouts|_includes|_sass|LICENSE|README)!i) }
 
   spec.add_runtime_dependency "jekyll", "~> 3.8"
   spec.add_runtime_dependency "jekyll-feed", "~> 0.9"

@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 /**
  * 
  */
@@ -21,7 +23,7 @@ const AutoComplete = AutoComplete || function(feed, selector) {
       $(this).attr('href', `${tmp[0]}?${objToQueryStr(query)}`);
     });
 
-    const data = feed.search(keyword);
+    const data = _feed.search(keyword);
     if (data.length === 0) {
       _$this.stop().hide();
     } else {

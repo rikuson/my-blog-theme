@@ -8,7 +8,7 @@ import $ from 'jquery';
  *   $contents_box.setPostData(posts);
  * });
  */
-const SearchBox = SearchBox || function($this) {
+const SearchBox = SearchBox || function(selector) {
   const DELAY_TIME = 500;
   const STANDBY_CLASS_NAME = 'fa-search';
   const READY_CLASS_NAME = 'fa-times';
@@ -21,9 +21,9 @@ const SearchBox = SearchBox || function($this) {
   let _busy;
   let _val;
 
-  function __construct($this) {
-    _$this = $this;
-    _$btn = $this.find('button');
+  function __construct(selector) {
+    _$this = $(selector);
+    _$btn = _$this.find('button');
     _$icon = _$btn.find('.fas');
     _$input = _$this.find('input');
 
@@ -73,7 +73,7 @@ const SearchBox = SearchBox || function($this) {
     _$icon.removeClass(all_class_names).addClass(class_name);
   }
 
-  __construct($this);
+  __construct(selector);
 
   return $.extend(_$this, { val });
 };

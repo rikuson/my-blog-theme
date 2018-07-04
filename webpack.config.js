@@ -3,20 +3,15 @@ const webpack = require('webpack');
 const MinifyPlugin = require('babel-minify-webpack-plugin');
 
 const config = {
-  entry: {
-    index: './_src/index.js',
-    category: './_src/category.js',
-    default: './_src/default.js',
-    search: './_src/search.js',
-  },
+  entry: './_src/app.js',
   output: {
-    filename: './dist/[name].js',
+    filename: './assets/bundle.js',
     path: __dirname,
   },
   resolve: {
     extensions: ['*', '.js'],
     alias: {
-      '~': path.join(__dirname),
+      '~': path.join(__dirname, '_src'),
     }
   },
   module: {

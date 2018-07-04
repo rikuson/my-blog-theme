@@ -13,7 +13,7 @@ const Feed = Feed || function(xml) {
   let _data;
   let _index;
 
-  async function __construct(xml) {
+  function __construct(xml) {
     _data = formatXmlData(xml);
     _index = lunr(function() {
       this.field('title');
