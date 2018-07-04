@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: base
 title:  "Welcome to Jekyll! 08"
 date:   2018-06-08 08:14:57 +0900
 ---

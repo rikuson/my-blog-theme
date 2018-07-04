@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: base
 title: Search Function
 date: 2018-06-28 08:14:57 +0900
 category: jekyll
