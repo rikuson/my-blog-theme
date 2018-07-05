@@ -1,9 +1,11 @@
+{% if page.layout != 'index' %}
 <div class="row">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{{ site.baseurl }}">Home</a></li>
-    {% if page.title %}
-    <li class="breadcrumb-item active">{{ page.title }}</li>
-    {% endif %}
+    <li class="breadcrumb-item"><a href="{{ '/' | relative_url }}">Home</a></li>
+    {% for category in page.categories %}
+    {% capture path %}{{ path }}{{ category }}/{% endcapture %}
+    <li class="breadcrumb-item"><a href="/{{ path }}">{{ site.data.categories[category] }}</a></li>
+    {% endfor %}
   </ol>
 </div>
-
+{% endif %}

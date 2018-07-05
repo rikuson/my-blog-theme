@@ -1,19 +1,11 @@
 ---
 layout: base
 ---
-<div class="row">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{{ site.baseurl }}/">Home</a></li>
-    <li class="breadcrumb-item active"><a href="{{ site.baseurl }}/category/{{ page.category }}">{{ page.category }}</a></li>
-  </ol>
-</div>
 {{ content }}
 <div id="posts">
   <div class="card-columns">
-    {% for post in site.posts %}
-    {% if post.category == 'jekyll' %}
+    {% for post in site.categories.jekyll %}
     {% include post.html %}
-    {% endif %}
     {% endfor %}
   </div>
 </div>

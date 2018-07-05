@@ -1,8 +1,7 @@
 ---
 layout: category
-controller: category
 title: Jekyll
-category: jekyll
+categories: [category]
 ---
 
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.
