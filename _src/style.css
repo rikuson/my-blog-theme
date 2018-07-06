@@ -17,7 +17,7 @@ h2 {
   color: #FFF;
 }
 
-#search_box button {
+.search-box-btn {
   background: none;
   color: inherit;
   border: none;

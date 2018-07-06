@@ -16,6 +16,7 @@
 title: Your awesome title
 email: your-email@example.com
 username: your name
+lang: 'ja'
 date_of_issue: 2017
 description: >- # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this

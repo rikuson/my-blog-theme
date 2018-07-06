@@ -23,7 +23,7 @@ const SearchBox = SearchBox || function(selector) {
 
   function __construct(selector) {
     _$this = $(selector);
-    _$btn = _$this.find('button');
+    _$btn = _$this.find('.search-box-btn');
     _$icon = _$btn.find('.fas');
     _$input = _$this.find('input');
 
