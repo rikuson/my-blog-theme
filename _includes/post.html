@@ -9,7 +9,7 @@
       <time class="card-text"><i class="far fa-calendar-alt"></i> {{ post.date | date: date_format }}</time>
       <p class="card-text">{{ post.excerpt }}</p>
       <div class="text-right">
-        <a class="card-link" href="{{ post.url | relative_url }}">{{ site.data.dict[site.lang].read-more }}</a>
+        <a class="card-link" href="{{ post.url | relative_url }}">{{ site.data.dict.read-more }}</a>
       </div>
     </div>
   </div>

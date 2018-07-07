@@ -16,8 +16,8 @@ class BaseController {
   async init() {
     // open external link as new tab
     $('a[href^="http"]').attr('target', '_blank');
-
-    const xml = await $.ajax({ url: '/feed.xml', dataType: 'xml' });
+    const feed_url = $('[type="application/rss+xml"]').attr('href');
+    const xml = await $.ajax({ url: feed_url, dataType: 'xml' });
     this.feed = new Feed(xml);
     this.$search_box.val(this.query.keyword);
 

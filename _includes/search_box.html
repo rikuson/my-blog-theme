@@ -5,9 +5,9 @@
       <a class="dropdown-item" href="{{ post.url | relative_url }}" data-id="{{ forloop.index }}"><i class="fas fa-arrow-right"></i> {{ post.title | escape }}</a>
       {% endfor %}
       <div role="separator" class="dropdown-divider"></div>
-      <button class="dropdown-item" type="submit"><i class="fas fa-search"></i> {{ site.data.dict[site.lang].see-more }}</button>
+      <button class="dropdown-item" type="submit"><i class="fas fa-search"></i> {{ site.data.dict.see-more }}</button>
     </div>
-    <input name="keyword" type="text" class="form-control" placeholder="{{ site.data.dict[site.lang].search }}">
+    <input name="keyword" type="text" class="form-control" placeholder="{{ site.data.dict.search }}">
     <button class="search-box-btn" type="button">
       <i class="fas fa-search"></i>
     </button>
