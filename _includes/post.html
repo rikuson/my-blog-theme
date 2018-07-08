@@ -1,15 +1,20 @@
 <div data-id="{{ forloop.index }}" class="card mb-3 d-none">
-  <div class="card-header">{% if post.category %}{{ post.category }}{% else %}No Category{% endif %}</div>
   <div class="card-body">
     <h3 class="h4 card-title">
       <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
     </h3>
     <div>
-      {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
-      <time class="card-text"><i class="far fa-calendar-alt"></i> {{ post.date | date: date_format }}</time>
+      {% assign date_format = "%b %-d, %Y" %}
+      <time class="card-text"><i class="fa fa-calendar"></i> {{ post.date | date: date_format }}</time>
+      {% assign category = post.categories | last %}
+      {% for entry in site.pages %}
+      {% if category and entry.path contains category %}
+      <p class="card-text"><i class="fa fa-folder-o"></i> <a href="{{ entry.url | relative_url }}">{{ site.data.dict[category] }}</a></p>
+      {% endif %}
+      {% endfor %}
       <p class="card-text">{{ post.excerpt }}</p>
       <div class="text-right">
-        <a class="card-link" href="{{ post.url | relative_url }}">{{ site.data.dict.read-more }}</a>
+        <a class="card-link" href="{{ post.url | relative_url }}">{{ site.data.dict.read-more }} <i class="fa fa-arrow-right"></i></a>
       </div>
     </div>
   </div>
