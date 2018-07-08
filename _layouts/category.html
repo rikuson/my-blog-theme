@@ -1,6 +1,15 @@
 ---
 layout: base
 ---
+<ul class="nav">
+  {% for entry in site.pages %}
+  {% assign dirs = page.path | split: '/' %}
+  {% assign index = dirs | size | minus: 2 %}
+  {% if entry.categories contains dirs[index] %}
+  <li class="nav-item mb-3"><a class="btn btn-outline-primary" href="{{ entry.path | relative_url }}">{{ entry.title }} <i class="fa fa-level-down"></i></a></li>
+  {% endif %}
+  {% endfor %}
+</ul>
 {{ content }}
 <div id="posts">
   <div class="card-columns">
