@@ -12,7 +12,7 @@ const SearchBox = SearchBox || function(selector) {
   const DELAY_TIME = 500;
   const STANDBY_CLASS_NAME = 'fa-search';
   const READY_CLASS_NAME = 'fa-times';
-  const BUSY_CLASS_NAME = 'fa-circle-notch';
+  const BUSY_CLASS_NAME = 'fa-circle-o-notch';
 
   let _$this;
   let _$btn;
@@ -24,7 +24,7 @@ const SearchBox = SearchBox || function(selector) {
   function __construct(selector) {
     _$this = $(selector);
     _$btn = _$this.find('.search-box-btn');
-    _$icon = _$btn.find('.fas');
+    _$icon = _$btn.find('.fa');
     _$input = _$this.find('input');
 
     _$btn.on('click', () => {

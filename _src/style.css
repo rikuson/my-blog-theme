@@ -38,7 +38,7 @@ h2 {
   min-height: calc(100vh - 95px);
 }
 
-#search_box .fa-circle-notch {
+#search_box .fa-circle-o-notch {
   -webkit-animation: spin 1.5s linear infinite;
   -moz-animation: spin 1.5s linear infinite;
   -ms-animation: spin 1.5s linear infinite;
