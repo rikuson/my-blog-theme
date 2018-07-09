@@ -1,4 +1,9 @@
 <div data-id="{{ forloop.index }}" class="card mb-3 d-none">
+  {% if post.image %}
+  <a href="{{ post.url | relative_url }}">
+    <img class="card-img-top" src="{{ post.image | relative_url }}" alt="thumbnail">
+  </a>
+  {% endif %}
   <div class="card-body">
     <h3 class="h4 card-title">
       <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
