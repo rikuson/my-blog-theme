@@ -16,21 +16,24 @@ const AutoComplete = AutoComplete || function(feed, selector) {
   }
 
   function suggest(keyword) {
+    updateLinkQueries(keyword);
+    const data = _feed.search(keyword);
+    if (data.length === 0) {
+      _$this.hide();
+    } else {
+      _$this.find('[data-id]').hide();
+      data.forEach(id => _$this.find(`[data-id="${id}"]`).show());
+      _$this.show();
+    }
+  }
+
+  function updateLinkQueries(keyword) {
     _$links.each(function() {
       const tmp = $(this).attr('href').split('?');
       let query = tmp[1] ? queryStrToObj(tmp[1]) : {};
       query.keyword = keyword;
       $(this).attr('href', `${tmp[0]}?${objToQueryStr(query)}`);
     });
-
-    const data = _feed.search(keyword);
-    if (data.length === 0) {
-      _$this.stop().hide();
-    } else {
-      _$this.find('[data-id]').hide();
-      data.forEach(id => _$this.find(`[data-id="${id}"]`).show());
-      _$this.stop().show();
-    }
   }
 
   function objToQueryStr(obj) {
