@@ -18,7 +18,8 @@ class BaseController {
     $('a[href^="http"]').attr('target', '_blank');
     const feed_url = $('[type="application/rss+xml"]').attr('href');
     const xml = await $.ajax({ url: feed_url, dataType: 'xml' });
-    this.feed = new Feed(xml);
+    const lang = $('meta[http-equiv="content-language"]').attr('content');
+    this.feed = new Feed(xml, lang);
     this.$search_box.val(this.query.keyword);
 
     const $auto_complete = new AutoComplete(this.feed, '#auto_complete');
@@ -38,7 +39,7 @@ class BaseController {
     const param_str = location.search.slice(1);
     param_str.split('&').map(str => {
       const tmp = str.split('=');
-      query[tmp[0]] = tmp[1];
+      query[tmp[0]] = decodeURI(tmp[1]);
     });
     return query;
   }
