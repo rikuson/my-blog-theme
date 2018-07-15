@@ -14,7 +14,7 @@
       {% assign category = post.categories | last %}
       {% for entry in site.pages %}
       {% if category and entry.path contains category %}
-      <p class="card-text"><i class="fa fa-folder-o"></i> <a href="{{ entry.url | relative_url }}">{{ site.data.dict[category] }}</a></p>
+      <p class="card-text"><i class="fa fa-folder-o"></i> <a href="{{ entry.url | relative_url }}">{{ entry.title }}</a></p>
       {% endif %}
       {% endfor %}
       <p class="card-text">{{ post.excerpt }}</p>

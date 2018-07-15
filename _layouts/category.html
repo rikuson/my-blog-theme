@@ -3,9 +3,8 @@ layout: base
 ---
 <ul class="nav">
   {% for entry in site.pages %}
-  {% assign dirs = page.path | split: '/' %}
-  {% assign index = dirs | size | minus: 2 %}
-  {% if entry.categories contains dirs[index] %}
+  {% assign category = page.url | split: '/' | last %}
+  {% if entry.categories contains category %}
   <li class="nav-item mb-3"><a class="btn btn-outline-primary" href="{{ entry.url | relative_url }}"><i class="fa fa-level-down"></i> {{ entry.title }}</a></li>
   {% endif %}
   {% endfor %}
@@ -13,7 +12,11 @@ layout: base
 {{ content }}
 <div id="posts">
   <div class="card-columns">
-    {% for post in site.categories.jekyll %}
+    {% assign category = page.path | split: '/' | last | remove: '.md' %}
+    {% if category == 'index' %}
+    {% assign category = 'category' %}
+    {% endif %}
+    {% for post in site.categories[category] %}
     {% include post.html %}
     {% endfor %}
   </div>
