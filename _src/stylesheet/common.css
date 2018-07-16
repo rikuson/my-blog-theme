@@ -1,11 +1,21 @@
-h1 {
+#contents {
+  /* header: 95px */
+  min-height: calc(100vh - 95px);
+}
+
+#contents h1 {
   padding-bottom: 1rem;
   margin-bottom: 1rem;
   border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
-h2 {
+#contents h2 {
   font-size: 1.5rem;
+  margin-top: 3rem;
+}
+
+#contents a {
+  text-decoration: underline;
 }
 
 #search_box {
@@ -31,15 +41,6 @@ h2 {
   width: 1rem;
   margin: auto;
   padding: 0;
-}
-
-#contents {
-  /* header: 95px */
-  min-height: calc(100vh - 95px);
-}
-
-#contents a {
-  text-decoration: underline;
 }
 
 #search_box .fa-circle-o-notch {

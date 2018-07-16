@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import 'bootstrap';
-import '~/style.css'
+import '~/stylesheet/common.css';
+import '~/stylesheet/jekyll-monokai-syntax.scss';
 import SearchBox from '~/model/search_box.js';
 import Feed from '~/model/feed.js';
 import AutoComplete from '~/model/auto_complete.js';
