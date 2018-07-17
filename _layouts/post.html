@@ -4,14 +4,11 @@ layout: base
 
 {{ content }}
 
-<div class="clearfix"></div>
-
-{% if page.previous.url %}
-<a class="float-left" href="{{ page.previous.url }}"><i class="fa fa-arrow-left"></i> {{ page.previous.title }}</a>
-{% endif %}
-
-{% if page.next.url %}
-<a class="float-right" href="{{ page.next.url }}">{{ page.next.title }} <i class="fa fa-arrow-right"></i></a>
-{% endif %}
-
-<div class="clearfix"></div>
+<div class="clearfix">
+  {% if page.previous.url %}
+  <a class="float-left" href="{{ page.previous.url }}"><i class="fa fa-arrow-left"></i> {{ page.previous.title }}</a>
+  {% endif %}
+  {% if page.next.url %}
+  <a class="float-right" href="{{ page.next.url }}">{{ page.next.title }} <i class="fa fa-arrow-right"></i></a>
+  {% endif %}
+</div>
