@@ -3,12 +3,6 @@
   min-height: calc(100vh - 95px);
 }
 
-#contents h1 {
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-}
-
 #contents h2 {
   font-size: 1.5rem;
   margin-top: 3rem;
@@ -16,6 +10,14 @@
 
 #contents a {
   text-decoration: underline;
+}
+
+#contents img {
+  max-width: 100%;
+}
+
+#contents iframe {
+  margin-bottom: 1rem;
 }
 
 #search_box {
