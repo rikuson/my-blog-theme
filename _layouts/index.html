@@ -4,9 +4,11 @@ layout: base
 
 {{ content }}
 <div id="posts">
-  <article class="card-columns">
+  <article class="row">
     {% for post in site.posts %}
-    {% include card.html %}
+    <div class="col-md-6 col-lg-4">
+      {% include card.html %}
+    </div>
     {% endfor %}
   </article>
 </div>

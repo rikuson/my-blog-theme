@@ -1,9 +1,0 @@
----
-layout: post
-title: Search Function
-date: 2018-06-28 08:14:57 +0900
----
-
-#
-I wanted make it real time search.
-TODO: 検索候補を表示

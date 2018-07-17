@@ -11,13 +11,15 @@ layout: base
 </ul>
 {{ content }}
 <div id="posts">
-  <div class="card-columns">
+  <div class="row">
     {% assign category = page.path | split: '/' | last | remove: '.md' %}
     {% if category == 'index' %}
     {% assign category = 'category' %}
     {% endif %}
     {% for post in site.categories[category] %}
-    {% include card.html %}
+    <div class="col-md-6 col-lg-4">
+      {% include card.html %}
+    </div>
     {% endfor %}
   </div>
 </div>
