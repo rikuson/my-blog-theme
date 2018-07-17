@@ -6,22 +6,17 @@
     <div id="contents" class="bg-light">
       <div class="container pt-4 pb-2" role="main">
         {% include breadcrumb.html %}
-        {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
+        {% if page.title %}
+        <h1 class="border-bottom pb-3 mb-3">
         {% if page.date %}
-        <header class="mb-2 text-primary">
-          {% assign date_format = "%b %-d, %Y" %}
-          <time class="card-text"><i class="fa fa-calendar"></i> {{ page.date | date: date_format }}</time>
-          {% for entry in site.pages %}
-          {% assign entry_name = entry.url | split: '/' | last %}
-          {% if entry_name and entry_name == page.categories.last %}
-          <span class="ml-3"><i class="fa fa-folder-o"></i> <a href="{{ entry.url | relative_url }}">{{ entry.title }}</a></span>
-          {% endif %}
-          {% endfor %}
-          <address class="d-inline ml-3"><i class="fa fa-user" aria-hidden="true"></i> {{ site.username }}</address>
-        </header>
+        {% assign date_format = "%Y/%b/%-d" %}
+        <time class="badge badge-pill badge-success mb-3">{{ page.date | date: date_format }}</time><br>
+        {% endif %}
+        {{ page.title }}
+        </h1>
         {% endif %}
         {% if page.image %}
-        <div class="text-center mb-2">
+        <div class="text-center mb-3">
           <img class="img-fluid" src="{{ page.image | relative_url }}" alt="thumbnail">
         </div>
         {% endif %}
