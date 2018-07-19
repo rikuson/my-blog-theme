@@ -16,6 +16,19 @@
   max-width: 100%;
 }
 
+#contents table {
+  border: 1px solid rgba(0,0,0,0.5);
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+}
+
+#contents th,
+#contents td {
+  border: 1px solid rgba(0,0,0,0.05);
+  padding: 1rem;
+}
+
 #contents iframe {
   margin-bottom: 1rem;
 }
