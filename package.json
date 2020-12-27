@@ -39,7 +39,7 @@
     "lunr": "^2.2.1",
     "lunr-languages": "^1.0.0",
     "masonry-layout": "^4.2.2",
-    "node-sass": "^4.9.2",
+    "node-sass": "^4.13.1",
     "phantomjs-prebuilt": "^2.1.16",
     "popper.js": "^1.14.3",
     "qunit": "^2.6.1",
