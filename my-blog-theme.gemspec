@@ -3,7 +3,6 @@ Gem::Specification.new do |spec|
   spec.name          = "my-blog-theme"
   spec.version       = "0.1.0"
   spec.authors       = ["Rikson"]
-  spec.email         = ["noskir123@yahoo.co.jp"]
 
   spec.summary       = "Blog theme for my blog"
   spec.description   = "It's based on jekyll and bootstrap-4."
