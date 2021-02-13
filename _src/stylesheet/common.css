@@ -29,6 +29,11 @@
   padding: 1rem;
 }
 
+#contents blockquote {
+  border-left: 5px solid #eee;
+  padding: 10px;
+}
+
 #contents iframe {
   margin-bottom: 1rem;
 }
